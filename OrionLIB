@@ -43,7 +43,7 @@ local Success, Response = pcall(function()
 end)
 
 if not Success then
-	warn("Failed to load LUCIDE icons")
+	warn("Failed to load LUCIDE icons "..Responce)
 end	
 
 local function GetIcon(IconName)
