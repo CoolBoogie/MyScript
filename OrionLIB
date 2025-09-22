@@ -5,7 +5,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New3LOADED")
+print("New4LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -46,11 +46,11 @@ if not Success then
 end	
 
 local function GetIcon(IconName)
-	if not Icons then
+	if not Icons or not Icons["48px"] then
 		return nil
 	end
 
-	local data = Icons["48px"] and Icons["48px"][IconName]
+	local data = Icons["48px"][IconName]
 	if data then
 		local assetId, size, offset = unpack(data)
 		return "rbxassetid://" .. assetId
@@ -58,6 +58,7 @@ local function GetIcon(IconName)
 
 	return nil
 end
+
 local useStudio = RunService:IsStudio() or false
 
 local Orion = Instance.new("ScreenGui")
