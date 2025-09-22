@@ -38,19 +38,25 @@ local OrionLib = {
 local Icons = {}
 
 local Success, Response = pcall(function()
-	Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
+	Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/lucide-roblox-direct/refs/heads/main/source.lua"))() 
 end)
 
 if not Success then
-	warn("nigger")
+	warn("Can`t Load icons:  " .. tostring(Response))
 end	
 
 local function GetIcon(IconName)
-	if Icons[IconName] ~= nil then
-		return Icons[IconName]
-	else
+	if not Icons then
 		return nil
 	end
+
+	local data = Icons["48px"] and Icons["48px"][IconName]
+	if data then
+		local assetId, size, offset = unpack(data)
+		return "rbxassetid://" .. assetId
+	end
+
+	return nil
 end
 local useStudio = RunService:IsStudio() or false
 
