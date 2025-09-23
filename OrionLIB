@@ -5,7 +5,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New5LOADED")
+print("New6LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -47,8 +47,12 @@ if not Success then
 end
 
 local function GetIcon(IconName)
-    if Icons[IconName] ~= nil then
-        return Icons[IconName]
+    -- ищем иконку в подтаблице "48px"
+    local iconData = Icons["48px"] and Icons["48px"][IconName]
+    if iconData then
+        local assetId = iconData[1]  -- первый элемент = ID ассета
+        -- возвращаем готовый rbxassetid://...
+        return "rbxassetid://" .. tostring(assetId)
     else
         return nil
     end
