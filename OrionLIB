@@ -5,7 +5,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New4LOADED")
+print("New5LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -34,30 +34,26 @@ local OrionLib = {
 	Folder = nil,
 	SaveCfg = false
 }
-
 local Icons = {}
 
 local Success, Response = pcall(function()
-	Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/lucide-roblox-direct/refs/heads/main/source.lua"))() 
+    -- грузим Lua-файл и исполняем его
+    Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/refs/heads/main/icons.lua"))()
 end)
 
 if not Success then
-	warn("Can`t Load icons:  " .. tostring(Response))
-end	
+    warn("Не удалось загрузить иконки:", Response)
+    Icons = {}
+end
 
 local function GetIcon(IconName)
-	if not Icons or not Icons["48px"] then
-		return nil
-	end
-
-	local data = Icons["48px"][IconName]
-	if data then
-		local assetId, size, offset = unpack(data)
-		return "rbxassetid://" .. assetId
-	end
-
-	return nil
+    if Icons[IconName] ~= nil then
+        return Icons[IconName]
+    else
+        return nil
+    end
 end
+
 
 local useStudio = RunService:IsStudio() or false
 
