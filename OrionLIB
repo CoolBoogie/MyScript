@@ -58,15 +58,19 @@ end
 --    end
 --end
 
-
-local function GetIcon(IconName)
+local function GetIcon(IconName, fullData)
     local iconData = Icons["48px"] and Icons["48px"][IconName]
     if iconData then
-        return {
-            Image = "rbxassetid://" .. tostring(iconData[1]),
-            RectSize = Vector2.new(iconData[2][1], iconData[2][2]),
-            RectOffset = Vector2.new(iconData[3][1], iconData[3][2])
-        }
+        local imageId = "rbxassetid://" .. tostring(iconData[1])
+        if fullData then
+            return {
+                Image = imageId,
+                RectSize = Vector2.new(iconData[2][1], iconData[2][2]),
+                RectOffset = Vector2.new(iconData[3][1], iconData[3][2])
+            }
+        else
+            return imageId -- ✅ по умолчанию просто строка
+        end
     end
     return nil
 end
