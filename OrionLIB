@@ -5,7 +5,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New13LOADED")
+print("New14LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -46,39 +46,16 @@ if not Success then
     Icons = {}
 end
 
---local function GetIcon(IconName)
-    -- ищем иконку в подтаблице "48px"
---    local iconData = Icons["48px"] and Icons["48px"][IconName]
---    if iconData then
---        local assetId = iconData[1]  -- первый элемент = ID ассета
-        -- возвращаем готовый rbxassetid://...
---        return "rbxassetid://" .. tostring(assetId)
---    else
---        return nil
---    end
---end
-
-
-local function GetIcon(name : string): {id: number, imageRectSize: Vector2, imageRectOffset: Vector2}
-	if not Icons then
-		warn("Lucide Icons: Cannot use icons as icons library is not loaded")
-		return
-	end
-	name = string.match(string.lower(name), "^%s*(.*)%s*$") :: string
-	local sizedicons = Icons['48px']
-	local r = sizedicons[name]
-	if not r then
-		error(`Lucide Icons: Failed to find icon by the name of "{name}"`, 2)
-	end
-
-	if type(r[1]) ~= "number" or type(rirs) ~= "table" or type(riro) ~= "table" then
-		error("Lucide Icons: Internal error: Invalid auto-generated asset entry")
-	end
-
-	local irs = Vector2.new(rirs[1], rirs[2])
-	local iro = Vector2.new(riro[1], riro[2])
-	return "rbxassetid://"..r[1]
+local function GetIcon(IconName)
+    local iconData = Icons["48px"] and Icons["48px"][IconName]
+    if iconData then
+       local assetId = iconData[1] 
+       return "rbxassetid://" .. tostring(assetId)
+    else
+        return nil
+   end
 end
+
 
 local useStudio = RunService:IsStudio() or false
 
