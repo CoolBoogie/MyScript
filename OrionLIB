@@ -5,7 +5,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New12LOADED")
+print("New13LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -71,23 +71,13 @@ local function GetIcon(name : string): {id: number, imageRectSize: Vector2, imag
 		error(`Lucide Icons: Failed to find icon by the name of "{name}"`, 2)
 	end
 
-	local rirs = r[2]
-	local riro = r[3]
-
 	if type(r[1]) ~= "number" or type(rirs) ~= "table" or type(riro) ~= "table" then
 		error("Lucide Icons: Internal error: Invalid auto-generated asset entry")
 	end
 
 	local irs = Vector2.new(rirs[1], rirs[2])
 	local iro = Vector2.new(riro[1], riro[2])
-
-	local asset = {
-		id = r[1],
-		imageRectSize = irs,
-		imageRectOffset = iro,
-	}
-
-	return asset
+	return "rbxassetid://"..r[1]
 end
 
 local useStudio = RunService:IsStudio() or false
