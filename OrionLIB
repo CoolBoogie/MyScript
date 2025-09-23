@@ -5,7 +5,6 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New14LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -39,10 +38,10 @@ local Icons = {}
 local Success, Response = pcall(function()
     -- грузим Lua-файл и исполняем его
     Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/refs/heads/main/icons.lua"))()
+	warn("Lucide icons are broken xd")
 end)
 
 if not Success then
-    warn("Не удалось загрузить иконки:", Response)
     Icons = {}
 end
 
@@ -887,6 +886,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 		if GetIcon(TabConfig.Icon) ~= nil then
 			TabFrame.Ico.Image = GetIcon(TabConfig.Icon)
+			print(GetIcon(TabConfig.Icon))
 		end	
 
 		local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
