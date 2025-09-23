@@ -5,7 +5,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 local CoreGui = game:GetService("CoreGui")
-print("New8LOADED")
+print("New9LOADED")
 local OrionLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -57,23 +57,23 @@ end
 --        return nil
 --    end
 --end
+CreateElement("Image", function(ImageID)
+    local icon = GetIcon(ImageID, true)
+    local ImageNew = Create("ImageLabel", {
+        BackgroundTransparency = 1
+    })
 
-local function GetIcon(IconName, fullData)
-    local iconData = Icons["48px"] and Icons["48px"][IconName]
-    if iconData then
-        local imageId = "rbxassetid://" .. tostring(iconData[1])
-        if fullData then
-            return {
-                Image = imageId,
-                RectSize = Vector2.new(iconData[2][1], iconData[2][2]),
-                RectOffset = Vector2.new(iconData[3][1], iconData[3][2])
-            }
-        else
-            return imageId -- ✅ по умолчанию просто строка
-        end
+    if icon then
+        ImageNew.Image = icon.Image
+        ImageNew.ImageRectSize = icon.RectSize
+        ImageNew.ImageRectOffset = icon.RectOffset
+    else
+        -- fallback: если нет иконки, считаем что ImageID уже строка с assetId
+        ImageNew.Image = ImageID
     end
-    return nil
-end
+
+    return ImageNew
+end)
 
 
 local useStudio = RunService:IsStudio() or false
