@@ -89,24 +89,6 @@ local function getIcon(name : string): {id: number, imageRectSize: Vector2, imag
 
 	return asset
 end
-CreateElement("Image", function(ImageID)
-    local icon = GetIcon(ImageID, true)
-    local ImageNew = Create("ImageLabel", {
-        BackgroundTransparency = 1
-    })
-
-    if icon then
-        ImageNew.Image = icon.Image
-        ImageNew.ImageRectSize = icon.RectSize
-        ImageNew.ImageRectOffset = icon.RectOffset
-    else
-        -- fallback: если нет иконки, считаем что ImageID уже строка с assetId
-        ImageNew.Image = ImageID
-    end
-
-    return ImageNew
-end)
-
 
 local useStudio = RunService:IsStudio() or false
 
