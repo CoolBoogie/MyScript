@@ -35,16 +35,6 @@ local OrionLib = {
 }
 local Icons = {}
 
-local Success, Response = pcall(function()
-    -- грузим Lua-файл и исполняем его
-    Icons = loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLtd/Rayfield/refs/heads/main/icons.lua"))()
-	warn("Lucide icons are broken xd")
-end)
-
-if not Success then
-    Icons = {}
-end
-
 local function GetIcon(IconName)
     local iconData = Icons["48px"] and Icons["48px"][IconName]
     if iconData then
