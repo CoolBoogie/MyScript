@@ -20,61 +20,18 @@ local OrionLib = {
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150)
 		},
-
-  		NeonPulse = {
-  	Main = Color3.fromRGB(20, 20, 20),
-  	Second = Color3.fromRGB(30, 30, 30),
-  	Stroke = Color3.fromRGB(60, 0, 60),
-  	Divider = Color3.fromRGB(90, 0, 90),
-  	Text = Color3.fromRGB(255, 0, 255),
-  	TextDark = Color3.fromRGB(180, 100, 180)
-  },
-  AlienWave = {
-	Main = Color3.fromRGB(5, 15, 15),
-	Second = Color3.fromRGB(10, 25, 25),
-	Stroke = Color3.fromRGB(0, 139, 139),
-	Divider = Color3.fromRGB(0, 90, 90),
-	Text = Color3.fromRGB(100, 255, 255),
-	TextDark = Color3.fromRGB(80, 180, 180)
-},
-VaporCore = {
-	Main = Color3.fromRGB(20, 10, 30),
-	Second = Color3.fromRGB(30, 15, 50),
-	Stroke = Color3.fromRGB(255, 0, 255),
-	Divider = Color3.fromRGB(100, 0, 100),
-	Text = Color3.fromRGB(255, 200, 255),
-	TextDark = Color3.fromRGB(180, 100, 180)
-},
-TechnoBloom = {
-	Main = Color3.fromRGB(25, 10, 25),
-	Second = Color3.fromRGB(40, 20, 40),
-	Stroke = Color3.fromRGB(255, 0, 255),
-	Divider = Color3.fromRGB(100, 0, 100),
-	Text = Color3.fromRGB(255, 200, 255),
-	TextDark = Color3.fromRGB(150, 100, 150)
-},
-DeepCircuit = {
-	Main = Color3.fromRGB(15, 25, 25),
-	Second = Color3.fromRGB(25, 35, 35),
-	Stroke = Color3.fromRGB(0, 139, 139),
-	Divider = Color3.fromRGB(0, 100, 100),
-	Text = Color3.fromRGB(0, 255, 200),
-	TextDark = Color3.fromRGB(0, 180, 150)
-},
-MagentaShock = {
-	Main = Color3.fromRGB(30, 0, 30),
-	Second = Color3.fromRGB(50, 0, 50),
-	Stroke = Color3.fromRGB(100, 0, 100),
-	Divider = Color3.fromRGB(150, 0, 150),
-	Text = Color3.fromRGB(255, 0, 255),
-	TextDark = Color3.fromRGB(200, 100, 200)
-}
-
-
+		NeonGlacier = {
+			Main = Color3.fromRGB(10, 30, 35),     
+			Second = Color3.fromRGB(20, 50, 60),     
+			Stroke = Color3.fromRGB(255, 0, 255), 
+			Divider = Color3.fromRGB(100, 0, 100),   
+			Text = Color3.fromRGB(200, 255, 255),   
+			TextDark = Color3.fromRGB(120, 180, 180) 
+		}
 
 
 	},
-	SelectedTheme = "VaporCore",
+	SelectedTheme = "NeonGlacier,
 	Folder = nil,
 	SaveCfg = false
 }
