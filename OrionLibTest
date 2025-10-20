@@ -74,7 +74,7 @@ MagentaShock = {
 
 
 	},
-	SelectedTheme = "RageByte",
+	SelectedTheme = "MagentaShock",
 	Folder = nil,
 	SaveCfg = false
 }
