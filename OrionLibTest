@@ -497,7 +497,7 @@ function OrionLib:Init()
 				LoadCfg(readfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt"))
 				OrionLib:MakeNotification({
 					Name = "Configuration",
-					Content = "Auto-loaded configuration for the game " .. game.GameId .. ".",
+					Content = "Auto-loaded configuration.",
 					Time = 5
 				})
 			end
@@ -745,12 +745,6 @@ function OrionLib:MakeWindow(WindowConfig)
 			UnlockMouse(false)
 		end
 		
-		OrionLib:MakeNotification({
-			Name = "Interface Hidden",
-			Content = "Tap "  .. WindowConfig.KeyToOpenWindow .. " to reopen the interface",
-			Time = 3
-		})
-
 		showMobileOpenButton()
 		WindowConfig.CloseCallback()
 	end)
