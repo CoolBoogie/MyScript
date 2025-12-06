@@ -615,7 +615,8 @@ function OrionLib:MakeWindow(WindowConfig)
 		}), "Second"), 
 		AddThemeObject(SetProps(MakeElement("Frame"), {
 			Size = UDim2.new(0, 1, 1, 0),
-			Position = UDim2.new(1, -1, 0, 0)
+			Position = UDim2.new(1, -1, 0, 0),
+            BackgroundTransparency = 1
 		}), "Stroke"), 
 		TabHolder,
 		SetChildren(SetProps(MakeElement("TFrame"), {
