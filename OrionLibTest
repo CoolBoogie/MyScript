@@ -430,6 +430,20 @@ local NotificationHolder = SetProps(SetChildren(MakeElement("TFrame"), {
 	Parent = Orion
 })
 
+function OrionLib:LoadCfg1(path)
+	if type(path) == "string" and isfile(path) then
+		local json = readfile(path)
+		LoadCfg(json)
+	else
+		warn("Zalupa seb!:", path)
+	end
+end
+function OrionLib:SaveCfg1(Name)
+	if type(Name) == "string" then 
+		SaveCfg(Name)
+	end
+end
+
 function OrionLib:MakeNotification(NotificationConfig)
 	spawn(function()
 		NotificationConfig.Name = NotificationConfig.Name or "Notification"
@@ -494,8 +508,8 @@ end
 function OrionLib:Init()
 	if OrionLib.SaveCfg then	
 		pcall(function()
-			if isfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt") then
-				LoadCfg(readfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt"))
+			if isfile(OrionLib.Folder .. "/" .. "AutoSave" .. ".txt") then
+				LoadCfg(readfile(OrionLib.Folder .. "/" .. "AutoSave" .. ".txt"))
 				OrionLib:MakeNotification({
 					Name = "Configuration",
 					Content = "Auto-loaded configuration.",
@@ -1174,7 +1188,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 				AddConnection(Click.Activated, function()
 					TweenService:Create(ToggleFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(OrionLib.Themes[OrionLib.SelectedTheme].Second.R * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.G * 255 + 3, OrionLib.Themes[OrionLib.SelectedTheme].Second.B * 255 + 3)}):Play()
-					SaveCfg(game.GameId)
+					SaveCfg("AutoSave")
 					Toggle:Set(not Toggle.Value)
 				end)
 
@@ -1277,7 +1291,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					if Input == DragInput and Input == FocusDrag and Dragging then
 						local SizeScale = math.clamp((Input.Position.X - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
 						Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale)) 
-						SaveCfg(game.GameId)
+						SaveCfg("AutoSave")
 					end
 				end)
 
@@ -1301,7 +1315,7 @@ function OrionLib:MakeWindow(WindowConfig)
 							Location = UserInputService:GetMouseLocation().X
 							local SizeScale = math.clamp((Location - SliderBar.AbsolutePosition.X) / SliderBar.AbsoluteSize.X, 0, 1)
 							Slider:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale)) 
-							SaveCfg(game.GameId)
+							SaveCfg("AutoSave")
 						else
 							loop:Disconnect()
 						end
@@ -1423,7 +1437,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 						AddConnection(OptionBtn.MouseButton1Click, function()
 							Dropdown:Set(Option)
-							SaveCfg(game.GameId)
+							SaveCfg("AutoSave")
 						end)
 
 						Dropdown.Buttons[Option] = OptionBtn
@@ -1641,7 +1655,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 						AddConnection(OptionBtn.MouseButton1Click, function()
 							Dropdown:Set(Option)
-							SaveCfg(game.GameId)
+							SaveCfg("AutoSave")
 						end)
 
 						Dropdown.Buttons[Option] = OptionBtn
@@ -1916,7 +1930,7 @@ function OrionLib:MakeWindow(WindowConfig)
 
 						AddConnection(OptionBtn.MouseButton1Click, function()
 							Dropdown:Set(Option)
-							SaveCfg(game.GameId)
+							SaveCfg("AutoSave")
 						end)
 
 						Dropdown.Buttons[Option] = OptionBtn
@@ -2058,7 +2072,7 @@ function OrionLib:MakeWindow(WindowConfig)
 						end)
 						Key = Key or Bind.Value
 						Bind:Set(Key)
-						SaveCfg(game.GameId)
+						SaveCfg("AutoSave")
 					end
 				end)
 
@@ -2298,7 +2312,7 @@ function OrionLib:MakeWindow(WindowConfig)
 					Color.BackgroundColor3 = Color3.fromHSV(ColorH, 1, 1)
 					Colorpicker:Set(ColorpickerBox.BackgroundColor3)
 					ColorpickerConfig.Callback(ColorpickerBox.BackgroundColor3)
-					SaveCfg(game.GameId)
+					SaveCfg("AutoSave")
 				end
 
 				ColorH = 1 - (math.clamp(HueSelection.AbsolutePosition.Y - Hue.AbsolutePosition.Y, 0, Hue.AbsoluteSize.Y) / Hue.AbsoluteSize.Y)
