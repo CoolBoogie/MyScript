@@ -43,7 +43,6 @@ local function GetIcon(IconName)
     if Icons[key] then
         return Icons[key]
     else
-        warn("Icon not found:", key)
         return nil
     end
 end
